@@ -30,13 +30,13 @@ resource "aws_sqs_queue" "checkout" {
 resource "aws_sns_topic_subscription" "checkout_sqs_target" {
   topic_arn = "arn:aws:sns:eu-west-1:536697261635:silver-bullet-checkout-events"
   protocol  = "sqs"
-  endpoint  = aws_sqs_queue.checkouts.arn
+  endpoint  = aws_sqs_queue.checkout.arn
 }
 
 resource "aws_pipes_pipe" "checkout" {
   name     = "silver-bullet-checkout-pipe"
   role_arn = aws_iam_role.pipes.arn
-  source   = aws_sqs_queue.checkouts.arn
+  source   = aws_sqs_queue.checkout.arn
   target   = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
 }
 
