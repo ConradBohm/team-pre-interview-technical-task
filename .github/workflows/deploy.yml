@@ -31,3 +31,4 @@ jobs:
           terraform init
           terraform validate
           terraform plan -out tf.plan
+          terraform apply tf.plan
