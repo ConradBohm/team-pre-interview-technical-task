@@ -1,10 +1,12 @@
-# terraform { 
-#   cloud { 
-    
-#     organization = "conrad_bohm_test" 
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
 
-#     workspaces { 
-#       name = "noths-tech-test" 
-#     } 
-#   } 
-# }
+provider "aws" {
+  region = "us-east-1"
+}
