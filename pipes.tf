@@ -41,10 +41,10 @@ resource "aws_sns_topic_subscription" "checkouts_sqs_target" {
   endpoint  = aws_sqs_queue.checkouts.arn
 }
 
-resource "aws_pipes_pipe" "checkout" {
+resource "aws_pipes_pipe" "checkouts" {
   name     = "silver-bullet-checkouts-pipe"
   role_arn = aws_iam_role.pipes.arn
-  source   = aws_sqs_queue.checkout.arn
+  source   = aws_sqs_queue.checkouts.arn
   target   = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
 }
 
