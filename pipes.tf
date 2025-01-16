@@ -17,6 +17,12 @@ resource "aws_pipes_pipe" "basket" {
   role_arn = aws_iam_role.pipes.arn
   source   = aws_sqs_queue.basket.arn
   target   = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
+
+  target_parameters {
+    input_template = <<-EOT
+      { "event": <$.body> }
+    EOT
+  }
 }
 
 resource "aws_sqs_queue" "checkout" {
@@ -38,52 +44,10 @@ resource "aws_pipes_pipe" "checkout" {
   role_arn = aws_iam_role.pipes.arn
   source   = aws_sqs_queue.checkout.arn
   target   = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
-}
 
-resource "aws_iam_role" "pipes" {
-  name = "silver-bullet-pipes-role"
-
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Sid    = ""
-        Principal = {
-          Service = "pipes.amazonaws.com"
-        }
-      },
-    ]
-  })
-}
-
-resource "aws_iam_role_policy" "pipes" {
-  role = aws_iam_role.pipes.id
-  name = "Pipes"
-  policy = jsonencode({
-    Statement = [{
-      Effect = "Allow"
-      Action = ["pipes:*"]
-      Resource = ["arn:aws:pipes:eu-west-1:536697261635:pipes/silver-bullet-*"]
-    }]
-  })
-}
-
-resource "aws_iam_role_policy" "sqs" {
-  role = aws_iam_role.pipes.id
-  name = "Pipes"
-  policy = jsonencode({
-    Statement = [{
-      Effect = "Allow"
-      Action = [
-            "sqs:ReceiveMessage",
-            "sqs:DeleteMessage",
-            "sqs:GetQueueAttributes"
-        ]
-      Resource = "arn:aws:sqs:eu-west-1:536697261635:silver-bullet-*"
-    }]
-  })
+  target_parameters {
+    input_template = <<-EOT
+      { "event": <$.body> }
+    EOT
+  }
 }
