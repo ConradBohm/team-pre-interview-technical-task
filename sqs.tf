@@ -29,3 +29,11 @@ resource "aws_sns_topic_subscription" "checkout_sqs_target" {
 }
 
 # =============================================================================================
+
+resource "aws_sqs_queue" "purchase" {
+  name                      = "silver-bullet-purchase-events"
+  delay_seconds             = 90
+  max_message_size          = 2048
+  message_retention_seconds = 86400
+  receive_wait_time_seconds = 10
+}
