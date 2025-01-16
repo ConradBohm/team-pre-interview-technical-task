@@ -71,3 +71,15 @@ resource "aws_iam_role_policy" "pipes" {
     }]
   })
 }
+
+resource "aws_iam_role_policy" "sqs" {
+  role = aws_iam_role.pipes.id
+  name = "Pipes"
+  policy = jsonencode({
+    Statement = [{
+      Effect = "Allow"
+      Action = ["sqs:ReceiveMessage"]
+      Resource = ["arn:aws:pipes:eu-west-1:536697261635:pipes/silver-bullet-*"]
+    }]
+  })
+}
