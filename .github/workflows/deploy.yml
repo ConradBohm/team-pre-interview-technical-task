@@ -2,6 +2,9 @@ name: Deploy Terraform
 
 on: [ push ]
 
+env:
+  AWS_REGION: eu-west-1
+
 jobs:
   deploy-tf:
     runs-on: ubuntu-latest
