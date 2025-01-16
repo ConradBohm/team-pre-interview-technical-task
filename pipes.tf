@@ -53,15 +53,11 @@ resource "aws_iam_role" "pipes" {
         Effect = "Allow"
         Sid    = ""
         Principal = {
-          Service = "ec2.amazonaws.com"
+          Service = "pipes.amazonaws.com"
         }
       },
     ]
   })
-
-  tags = {
-    tag-key = "tag-value"
-  }
 }
 
 resource "aws_iam_role_policy" "pipes" {
