@@ -79,7 +79,7 @@ resource "aws_iam_role_policy" "sqs" {
     Statement = [{
       Effect = "Allow"
       Action = ["sqs:ReceiveMessage"]
-      Resource = ["arn:aws:pipes:eu-west-1:536697261635:pipes/silver-bullet-*"]
+      Resource = ["arn:aws:sqs:eu-west-1:536697261635:silver-bullet-*"]
     }]
   })
 }
