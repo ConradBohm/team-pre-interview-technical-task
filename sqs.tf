@@ -32,6 +32,7 @@ resource "aws_sns_topic_subscription" "checkout_sqs_target" {
 
 resource "aws_sqs_queue" "purchase" {
   name                      = "silver-bullet-purchase-events"
+  fifo_queue                = true
   delay_seconds             = 90
   max_message_size          = 2048
   message_retention_seconds = 86400
