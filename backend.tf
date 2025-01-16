@@ -3,7 +3,7 @@
 terraform {
   backend "s3" {
     bucket = "noths-lab-recruitment-terraform"
-    key    = "states/USERNAME/terraform.state"
+    key    = "states/silver-bullet/terraform.state"
     region = "eu-west-1"
   }
 }
