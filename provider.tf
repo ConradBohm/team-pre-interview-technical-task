@@ -1,10 +1,10 @@
-terraform { 
-  cloud { 
+# terraform { 
+#   cloud { 
     
-    organization = "conrad_bohm_test" 
+#     organization = "conrad_bohm_test" 
 
-    workspaces { 
-      name = "noths-tech-test" 
-    } 
-  } 
-}
+#     workspaces { 
+#       name = "noths-tech-test" 
+#     } 
+#   } 
+# }
