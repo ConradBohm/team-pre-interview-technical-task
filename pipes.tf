@@ -78,8 +78,12 @@ resource "aws_iam_role_policy" "sqs" {
   policy = jsonencode({
     Statement = [{
       Effect = "Allow"
-      Action = ["sqs:ReceiveMessage"]
-      Resource = ["arn:aws:sqs:eu-west-1:536697261635:silver-bullet-*"]
+      Action = [
+            "sqs:ReceiveMessage",
+            "sqs:DeleteMessage",
+            "sqs:GetQueueAttributes"
+        ]
+      Resource = "arn:aws:sqs:eu-west-1:536697261635:silver-bullet-*"
     }]
   })
 }
