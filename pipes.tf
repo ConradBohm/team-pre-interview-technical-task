@@ -28,7 +28,7 @@ resource "aws_sqs_queue" "checkouts" {
 }
 
 resource "aws_sns_topic_subscription" "checkouts_sqs_target" {
-  topic_arn = "arn:aws:sns:eu-west-1:536697261635:silver-bullet-checkouts-events"
+  topic_arn = "arn:aws:sns:eu-west-1:536697261635:Isilver-bullet-checkouts-events"
   protocol  = "sqs"
   endpoint  = aws_sqs_queue.checkouts.arn
 }
