@@ -1,6 +1,7 @@
 resource "aws_cloudwatch_event_rule" "purchase" {
   name        = "silver-bullet-capture-basket-checkout"
   description = "Capture each event from Basket and Checkout topics"
+  event_bus_name = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
 
   event_pattern = jsonencode({
     source = ["aws.sns"]
