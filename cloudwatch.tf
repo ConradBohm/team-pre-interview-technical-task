@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_event_rule" "purchase" {
-  name        = "silver-bullet-capture-basket-checkout"
-  description = "Capture each event from Basket and Checkout topics"
+  name           = "silver-bullet-capture-basket-checkout"
+  description    = "Capture each event from Basket and Checkout topics"
   event_bus_name = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
 
   event_pattern = jsonencode({
@@ -18,11 +18,11 @@ resource "aws_cloudwatch_event_target" "purchase" {
 # =============================================================================================
 
 resource "aws_cloudwatch_log_group" "pipes" {
-  name              = "/silver-bullet/aws/events/pipes-events"
+  name = "/silver-bullet/aws/events/pipes-events"
   retention_in_days = 5
 }
 
 resource "aws_cloudwatch_log_group" "purchase" {
-  name              = "/silver-bullet/aws/events/rules/purchase-events"
+  name = "/silver-bullet/aws/events/rules/purchase-events"
   retention_in_days = 5
 }
