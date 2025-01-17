@@ -49,5 +49,6 @@ jobs:
       
       - name: Run Test Scripts
         run: |
+          apt-get install fzf
           scripts/send-mock-events.sh silver-bullet
           scripts/watch-sqs-queue.sh silver-bullet-purchase-events-processor
