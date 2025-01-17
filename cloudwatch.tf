@@ -17,10 +17,10 @@ resource "aws_cloudwatch_event_target" "purchase" {
 
 # =============================================================================================
 
-# resource "aws_cloudwatch_log_group" "basket" {
-#   name              = "/silver-bullet/aws/events/pipes/basket-events"
-#   retention_in_days = 5
-# }
+resource "aws_cloudwatch_log_group" "basket" {
+  name              = "/silver-bullet/aws/events/pipes/basket-events"
+  retention_in_days = 5
+}
 
 resource "aws_cloudwatch_log_group" "checkout" {
   name              = "/silver-bullet/aws/events/pipes/checkout-events"
