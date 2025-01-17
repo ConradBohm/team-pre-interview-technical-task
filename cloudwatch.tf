@@ -7,9 +7,9 @@ resource "aws_cloudwatch_event_rule" "console" {
   })
 }
 
-resource "aws_cloudwatch_event_target" "sns" {
+resource "aws_cloudwatch_event_target" "purchase" {
   rule           = aws_cloudwatch_event_rule.console.name
-  target_id      = "SendToSNS"
+  target_id      = "silver-bullet-send-to-purchase"
   arn            = aws_sns_topic.aws_logins.arn
   sqs_target     = ws_sqs_queue.purchase.arn
   event_bus_name = "arn:aws:events:eu-west-1:536697261635:event-bus/silver-bullet-domain-events"
