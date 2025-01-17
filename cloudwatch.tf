@@ -18,7 +18,7 @@ resource "aws_cloudwatch_event_target" "purchase" {
 # =============================================================================================
 
 resource "aws_cloudwatch_log_group" "silver" {
-  name              = "silver-bullet-log-group"
+  name              = "/silver-bullet/aws/events/pipes/basket-events"
   retention_in_days = 5
 }
 
