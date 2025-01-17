@@ -3,7 +3,7 @@
 LOG_GROUP_NAME=$1
 
 if [[ -z $LOG_GROUP_NAME ]]; then
-  LOG_GROUP_NAME=$(aws logs describe-log-groups --query "logGroups[*].logGroupName" --output text | xargs -n1 | fzf)
+  LOG_GROUP_NAME=$(aws logs describe-log-groups --query "logGroups[*].logGroupName" --output text --profile=default | xargs -n1 | fzf)
 fi
 
 if [[ -z $LOG_GROUP_NAME ]]; then
