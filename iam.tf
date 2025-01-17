@@ -43,7 +43,7 @@ resource "aws_iam_role_policy" "sqs" {
   })
 }
 
-resource "aws_iam_policy" "logs_policy" {
+resource "aws_iam_role_policy" "logs_policy" {
   role = aws_iam_role.pipes.id
   name = "Logs"
   policy = jsonencode({
