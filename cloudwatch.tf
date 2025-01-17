@@ -22,7 +22,7 @@ resource "aws_cloudwatch_log_group" "silver" {
   retention_in_days = 5
 }
 
-resource "aws_cloudwatch_log_stream" "silver" {
-  name           = "/silver-bullet/log-stream"
-  log_group_name = aws_cloudwatch_log_group.silver.name
-}
+# resource "aws_cloudwatch_log_stream" "silver" {
+#   name           = "/silver-bullet/log-stream"
+#   log_group_name = aws_cloudwatch_log_group.silver.name
+# }
